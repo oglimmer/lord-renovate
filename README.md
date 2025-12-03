@@ -14,7 +14,7 @@ A web-based visual editor for [Renovate](https://docs.renovatebot.com/) configur
 
 ## Live Demo
 
-Visit the deployed application at: [https://[your-username].github.io/lord-renovate/](https://[your-username].github.io/lord-renovate/)
+Visit the deployed application at: [https://oglimmer.github.io/lord-renovate/](https://oglimmer.github.io/lord-renovate/)
 
 ## Configuration Options
 
