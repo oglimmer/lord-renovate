@@ -6,33 +6,26 @@
     ":dependencyDashboard",
     ":semanticCommits"
   ],
-
   "timezone": "Europe/Berlin",
   "prHourlyLimit": 10,
   "prConcurrentLimit": 5,
   "rebaseWhen": "behind-base-branch",
   "separateMinorPatch": true,
   "rangeStrategy": "bump",
-
   "schedule": ["before 5am on monday"],
-
   "automergeType": "branch",
-
   "labels": ["dependencies"],
-
   "lockFileMaintenance": {
     "enabled": true,
     "automerge": true,
     "schedule": ["before 5am on monday"]
   },
-
   "vulnerabilityAlerts": {
     "enabled": true,
     "labels": ["security"],
     "automerge": true,
     "schedule": ["at any time"]
   },
-
   "packageRules": [
     {
       "description": "Automatically merge minor and patch-level updates for production dependencies",
@@ -47,8 +40,8 @@
     },
     {
       "description": "Group Vue ecosystem packages",
-      "matchPackagePatterns": ["^vue", "^@vue/", "^@vitejs/plugin-vue"],
-      "groupName": "Vue ecosystem"
+      "groupName": "Vue ecosystem",
+      "matchPackageNames": ["/^vue/", "/^@vue//", "/^@vitejs/plugin-vue/"]
     },
     {
       "description": "Group Vite and related build tools",
@@ -57,19 +50,28 @@
     },
     {
       "description": "Group testing packages",
-      "matchPackagePatterns": ["^vitest", "^@vitest/", "^@playwright/"],
-      "matchPackageNames": ["jsdom", "@types/jsdom"],
+      "matchPackageNames": [
+        "jsdom",
+        "@types/jsdom",
+        "/^vitest/",
+        "/^@vitest//",
+        "/^@playwright//"
+      ],
       "groupName": "testing tools"
     },
     {
       "description": "Group ESLint and Prettier packages",
-      "matchPackagePatterns": ["^eslint", "^@vue/eslint-config-", "^prettier"],
-      "groupName": "linting and formatting"
+      "groupName": "linting and formatting",
+      "matchPackageNames": [
+        "/^eslint/",
+        "/^@vue/eslint-config-/",
+        "/^prettier/"
+      ]
     },
     {
       "description": "Group TypeScript and related packages",
-      "matchPackagePatterns": ["^typescript", "^@types/", "^@tsconfig/"],
-      "groupName": "TypeScript"
+      "groupName": "TypeScript",
+      "matchPackageNames": ["/^typescript/", "/^@types//", "/^@tsconfig//"]
     },
     {
       "description": "Group all npm dev dependencies",
@@ -92,12 +94,12 @@
       "description": "Security updates should merge immediately",
       "matchUpdateTypes": ["patch"],
       "matchCurrentVersion": "/.*/",
-      "matchPackagePatterns": ["*"],
       "vulnerabilityAlerts": {
         "enabled": true
       },
       "automerge": true,
-      "schedule": ["at any time"]
+      "schedule": ["at any time"],
+      "matchPackageNames": ["*"]
     }
   ]
 }
