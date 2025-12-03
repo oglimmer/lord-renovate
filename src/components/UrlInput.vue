@@ -27,6 +27,7 @@ const getGitHubRawUrls = (repoUrl: string): string[] => {
   if (!githubMatch) return []
 
   const [, owner, repo] = githubMatch
+  if (!owner || !repo) return []
   const cleanRepo = repo.replace(/\.git$/, '')
 
   // Try main and master branches
